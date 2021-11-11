@@ -1,4 +1,4 @@
-package com.armin.nowcoder.hw;
+package com.armin.nc.hw;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
