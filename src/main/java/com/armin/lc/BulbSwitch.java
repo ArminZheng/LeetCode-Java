@@ -1,9 +1,9 @@
 package com.armin.lc;
 
-public class Nov15 {
+public class BulbSwitch {
 
     /**
-     * 初始时有 n 个灯泡处于关闭状态。第一轮，你将会打开所有灯泡。接下来的第二轮，你将会每两个灯泡关闭一个。
+     * 319：初始时有 n 个灯泡处于关闭状态。第一轮，你将会打开所有灯泡。接下来的第二轮，你将会每两个灯泡关闭一个。
      *
      * 第三轮，你每三个灯泡就切换一个灯泡的开关（即，打开变关闭，关闭变打开）。第 i 轮，你每 i 个灯泡就切换一个灯泡的开关。直到第 n 轮，你只需要切换最后一个灯泡的开关。
      *
@@ -12,7 +12,7 @@ public class Nov15 {
      */
     public static void main(String[] args) {
         new Thread(() -> {
-            /*学到了，推理过程复述下：
+            /*推理过程复述下：
 
             第 i 轮会将编号为 i 的倍数的灯泡全部翻转；（i从1开始）
 
@@ -27,7 +27,9 @@ public class Nov15 {
             完全平方数个数是：1到当前平方根；
             */
             int n = 18;
+            // 比如：18 的平方根取整为 4，则含有 1*1、2*2、3*3、4*4 这四个完全平方数。5*5=25，已经超过 18 了。
             int result = (int) Math.sqrt(n);
+            System.out.println("result = " + result);
         }, "t1").start();
     }
 }
