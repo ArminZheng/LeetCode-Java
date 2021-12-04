@@ -16,13 +16,13 @@ public class LiftOff implements Runnable {
         this.countDown = countDown;
     }
 
-    public String status(){
-        return "#" + id + "(" + (countDown > 0? countDown : "Liftoff!") + "), ";
+    public String status() {
+        return "#" + id + "(" + (countDown > 0 ? countDown : "Liftoff!") + "), ";
     }
 
     @Override
     public void run() {
-        while (countDown-- > 0){
+        while (countDown-- > 0) {
             System.out.println(status());
             Thread.yield();
         }
