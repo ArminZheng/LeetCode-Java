@@ -16,7 +16,9 @@ public class KInversePairs {
         int n = 1000, k = 1000;
         // extracted(n, k);
         int i = kInversePairs(n, k);
+        int extracted = extracted(n, k);
         System.out.println("i = " + i);
+        System.out.println("extracted = " + extracted);
     }
     // 【1】【2】【3】【4】  ===>  5 【1】【2】【3】【4】
     // 列：j-(i-i) ===> j-(i-1) = j-i+1 总共 i 种
@@ -55,12 +57,7 @@ public class KInversePairs {
                 int cur = i & 1, pre = cur ^ 1;
                 // dp[cur][j] = dp[pre][j] - dp[pre][j-i] + dp[cur][j-1]
                 dp[cur][j] = dp[pre][j] - (j-i >= 0 ? dp[pre][j-i] : 0) + (j-1>=0 ? dp[cur][j-1] : 0);
-                // 不能这么写
-                // dp[cur][j] += MOD;
-                // dp[cur][j] %= MOD;
-                // if (dp[cur][j] < 0) {
-                //     System.out.println("dp["+cur+"]["+j+"] = " + dp[cur][j]);
-                // }
+
                 if (dp[cur][j] >= MOD) {
                     dp[cur][j] -= MOD;
                 } else if (dp[cur][j] < 0) {
