@@ -13,10 +13,10 @@ public class RecursionSort {
     }
 
     /*将数组递归分为多个子数组，在依次排序合并*/
-    public void mergesort(int[] arr, int left, int right) {
+    public void mergesort(int[] arr, int left, int right) { // 0 2
         if (left < right) {
             int center = (left + right) >> 1;
-            mergesort(arr, left, center);
+            mergesort(arr, left, center); // 左右两边相差一位时，是最后一次运行 如 0 1 2
             mergesort(arr, center + 1, right);
             merge(arr, left, center, right);
         }

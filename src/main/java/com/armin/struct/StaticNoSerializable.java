@@ -7,13 +7,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Demo {
+/**
+ * 静态变量不会被序列化
+ */
+public class StaticNoSerializable {
 
     private static String path = "/home/armin/demo_java";
 
     public static void main(String[] args) {
         // prepare object
-        DataObject dataObject = new DataObject();
+        Demo dataObject = new Demo();
         dataObject.setI(2);
         dataObject.setWord("123");
         // write
@@ -28,7 +31,7 @@ public class Demo {
             e.printStackTrace();
         }
         // change
-        DataObject.i = 998;
+        Demo.i = 998;
         // read
         try {
             FileInputStream fileInputStream = new FileInputStream(path);
@@ -43,12 +46,12 @@ public class Demo {
     }
 }
 
-class DataObject implements Serializable { //  Serializable 接口是自动序列化的，实现 Externalizable 则需要手动序列化, 對 transient 无效
-    // 被static修饰的变量是不会被序列化的，因为只有堆内存会被序列化.所以静态变量会天生不会被序列化。
+class Demo implements Serializable { //  Serializable 接口是自动序列化的，实现 Externalizable 则需要手动序列化, 对 transient 无效
+    // 被static修饰的变量是不会被序列化的，因为只有堆内存会被序列化.所以静态变量天生不会被序列化。
     protected static int i = 0;
     private String word = " ";
 
-    public DataObject() {
+    public Demo() {
     }
 
     public void setWord(String word) {
@@ -56,7 +59,7 @@ class DataObject implements Serializable { //  Serializable 接口是自动序�
     }
 
     public void setI(int i) {
-        DataObject.i = i;
+        Demo.i = i;
     }
 
     public String toString() {
