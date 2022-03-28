@@ -1,4 +1,4 @@
-package com.armin.struct;
+package com.armin;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
