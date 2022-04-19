@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 /**
- * StringJoinerGenerator
+ * StringJoiner 连接符 前缀 后缀
  *
  * @author zy
  * @version 2022/4/20
