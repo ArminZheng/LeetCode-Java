@@ -41,4 +41,26 @@ public class SocketClient {
             }
         }
     }
+
+    private static void socketConnect(InputStream input, OutputStream output) throws IOException {
+        final DataInputStream dataInputStream = new DataInputStream(input);
+        final DataOutputStream dataOutputStream = new DataOutputStream(output);
+
+        String s =
+                "{\"FuncName\":\"ApplyCenterPUBKey\",\"Random\":\"43577740\",\"SignCode\":\"d909qfKpy7ripmaCFQhMmt5MqH0=\",\"RetCode\":\"-1\",\"ErrMsg\":\"\",\"Data\":{\"LockID\":\"22130004\",\"LockType\":\"1\"}}";
+        String len = String.format("%010d", s.length());
+
+        dataOutputStream.write((len + s).getBytes());
+        // writer.newLine();
+        dataOutputStream.flush();
+
+        byte[] lenght = new byte[10];
+        dataInputStream.read(lenght);
+        int leng = Integer.parseInt(new String(lenght));
+
+        byte[] returnMsg = new byte[leng];
+        dataInputStream.read(returnMsg);
+        String returnMsgXml = new String(returnMsg);
+        System.out.println("returnMsgXml = " + returnMsgXml);
+    }
 }
